@@ -14,6 +14,8 @@ function PostContainer(props) {
             username={props.postProp.username}
             image={props.postProp.imageUrl}
             likes={props.postProp.likes}
+            loveIcon={props.loveIcon}
+            commentIcon={props.commentIcon}
         />
         <CommentSection 
             commentsProp={props.postProp.comments}

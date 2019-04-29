@@ -6,18 +6,25 @@
     align-items: center;
     border: 1px solid #DBDBDB;
     border-radius: 5px;
+    font-family: "Roboto";
+    font-size: 1.4rem;
+    background: white;
 
     &:last-child {
         margin-bottom: 4%;
     }
 
     .Post {
-        background: white;
+        margin-bottom: 3%;
 
         .Post-header {
             display: flex;
             height: 60px;
             align-items: center;
+
+            strong {
+                font-weight: bold;
+            }
 
             img {
                 height: 35px;
@@ -39,16 +46,24 @@
             justify-content: flex-start;
             margin-left: 2%;
             padding: 0;
-            height: auto;
 
             .socialmedia {
                 display: flex;
                 align-items: center;
+                justify-content: flex-start;
                 margin: 0;
-                height: 30px;
+                height: 45px;
 
-                i {
+                img {
+                    height: 25px;
                     width: auto;
+                    margin-right: 12px;
+                }
+            }
+
+            p {
+                strong {
+                    font-weight: bold;
                 }
             }
         }
