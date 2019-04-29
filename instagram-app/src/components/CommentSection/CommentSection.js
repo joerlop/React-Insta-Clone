@@ -9,7 +9,7 @@ function CommentSection(props) {
     <div className="CommentSection">
       {props.commentsProp.map(comment => <Comment commentsProp={comment}/>)}
       <div className="add-comment">
-        <input placeholder="Add a comment..."></input>
+        <input type="text" placeholder="Add a comment..."></input>
       </div>
     </div>
   );
