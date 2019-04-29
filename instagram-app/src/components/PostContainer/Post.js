@@ -13,7 +13,8 @@ function Post(props) {
         <img src={props.image}></img>
         <div className="Post-footer">
             <div className="socialmedia">
-                <p>Social media icons</p>
+                <i class="far fa-heart"></i>
+                <i class="far fa-comment"></i>
             </div>
             <p><strong>{props.likes} likes</strong></p>
         </div>

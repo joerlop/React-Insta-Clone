@@ -1,0 +1,57 @@
+.PostContainer {
+    margin-top: 4%;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+
+    &:last-child {
+        margin-bottom: 4%;
+    }
+
+    .Post {
+        background: white;
+
+        .Post-header {
+            display: flex;
+            height: 60px;
+            align-items: center;
+
+            img {
+                height: 35px;
+                width: auto;
+                border-radius: 50px;
+                margin-right: 3%;
+                margin-left: 2%;
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .Post-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-left: 2%;
+            padding: 0;
+            height: auto;
+
+            .socialmedia {
+                display: flex;
+                align-items: center;
+                margin: 0;
+                height: 30px;
+
+                i {
+                    width: auto;
+                }
+            }
+        }
+
+    }
+}

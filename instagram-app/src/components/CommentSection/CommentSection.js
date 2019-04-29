@@ -16,7 +16,7 @@ function CommentSection(props) {
 CommentSection.propTypes = {
     commentsProp: PropTypes.arrayOf(
         PropTypes.shape({
-            username: PropTypes.string,
+            username: PropTypes.string  ,
             text: PropTypes.string
         })
     )

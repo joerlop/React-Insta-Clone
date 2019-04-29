@@ -4,11 +4,15 @@ import './App.css';
 import dummyData from "./dummy-data";
 
 import PostContainer from "./components/PostContainer/PostContainer"
+import SearchBar from "./components/SearchBar/SearchBar"
 
 function App() {
   return (
     <div className="App">
-      {dummyData.map(post => <PostContainer postProp={post}/>)}
+      <SearchBar />
+      <div className="content">
+        {dummyData.map(post => <PostContainer postProp={post}/>)}
+      </div>
     </div>
   );
 }
