@@ -3,23 +3,49 @@ import "./PostContainer.scss"
 
 import PropTypes from "prop-types";
 
-function Post(props) {
-  return (
-    <div className="Post">
-        <div className="Post-header">
-            <img src={props.thumbnail}></img>
-            <p><strong>{props.username}</strong></p>
-        </div>
-        <img src={props.image}></img>
-        <div className="Post-footer">
-            <div className="socialmedia">
-                <img src={props.loveIcon}></img>
-                <img src={props.commentIcon}></img>
+class Post extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            likes: props.likes,
+            liked: false
+        }
+    }
+
+    addLike = event => {
+        event.preventDefault();
+        let likesNr = this.state.likes;
+        if (!this.state.liked) {
+            this.setState({
+                likes: likesNr + 1,
+                liked: true
+            })
+        } else {
+            this.setState({
+                likes: likesNr - 1,
+                liked: false
+            })
+        }
+    }
+
+    render() {
+        return (
+            <div className="Post">
+                <div className="Post-header">
+                    <img src={this.props.thumbnail}></img>
+                    <p><strong>{this.props.username}</strong></p>
+                </div>
+                <img src={this.props.image}></img>
+                <div className="Post-footer">
+                    <div className="socialmedia">
+                        <img src={this.props.loveIcon} onClick={(event) => this.addLike(event)}></img>
+                        <img src={this.props.commentIcon}></img>
+                    </div>
+                    <p><strong>{this.state.likes} likes</strong></p>
+                </div>
             </div>
-            <p><strong>{props.likes} likes</strong></p>
-        </div>
-    </div>
-  );
+      );
+    }    
 }
 
 Post.propTypes = {
