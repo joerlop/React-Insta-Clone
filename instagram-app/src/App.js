@@ -18,14 +18,43 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      postsOnState: [],     
+      postsOnState: [],
+      postsPreSearch: [],  
+      searchValue: ""   
     }
   }
 
   componentDidMount() {
     this.setState({
       postsOnState: dummyData,
+      postsPreSearch: dummyData
     })
+  }
+
+  handleChanges = event => {
+    event.preventDefault();
+    this.setState({
+      searchValue: event.target.value
+    })
+  }
+
+  search = event => {
+    event.preventDefault();
+    const prevState = this.state.postsOnState;
+    if (this.state.searchValue != "") {
+      const newState = prevState.filter(post => {
+        if (post.username == this.state.searchValue) {
+          return post;
+        }
+      })
+      this.setState({
+        postsOnState: newState
+      })  
+    } else {
+      this.setState({
+        postsOnState: this.state.postsPreSearch
+      })
+    }
   }
 
   render() {
@@ -37,6 +66,9 @@ class App extends React.Component {
           compass={compass}
           profile={profile}
           love={loveIcon}
+          change={this.handleChanges}
+          search={this.search}
+          value={this.state.searchValue}
         />
         <div className="content">
           {this.state.postsOnState.map((post, index) => 
