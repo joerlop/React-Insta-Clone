@@ -18,44 +18,14 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      postsOnState: dummyData,
-      postUsername: "",
-      comment: {
-        username: "jonathanerlich",
-        text: ""
-      }
+      postsOnState: [],     
     }
   }
 
-  handleChanges = (username, event) => {
-    event.preventDefault();
+  componentDidMount() {
     this.setState({
-      postUsername: username,
-      comment: {
-        username: "jonathanerlich",
-        text: event.target.value
-      }
+      postsOnState: dummyData,
     })
-  }
-
-  addComment = event => {
-    event.preventDefault();
-    const oldState = this.state.postsOnState; 
-    const newState = oldState.map(post => {
-      if (post.username == this.state.postUsername) {
-        post.comments.push(this.state.comment);
-      }
-      return post;
-    })
-
-    this.setState({
-      postsOnState: newState,
-      comment: {
-        postUsername: "",
-        username: "jonathanerlich",
-        text: "",
-      }
-    });
   }
 
   render() {
@@ -69,12 +39,10 @@ class App extends React.Component {
           love={loveIcon}
         />
         <div className="content">
-          {this.state.postsOnState.map(post => 
-            <PostContainer 
+          {this.state.postsOnState.map((post, index) => 
+            <PostContainer
+              indexProp={index} 
               postProp={post}
-              change={this.handleChanges} 
-              value={this.state.comment.text}
-              add={this.addComment}
               loveIcon={loveIcon}
               commentIcon={commentIcon}
             />

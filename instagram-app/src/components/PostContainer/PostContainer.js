@@ -21,11 +21,9 @@ function PostContainer(props) {
             username={props.postProp.username} 
             commentsProp={props.postProp.comments}
             timestamp={props.postProp.timestamp}
-            change={props.change} 
-            value={props.value}
-            add={props.add}
             loveIcon={props.loveIcon}
             commentIcon={props.commentIcon}
+            index={props.indexProp}
         />
     </div>
   );
