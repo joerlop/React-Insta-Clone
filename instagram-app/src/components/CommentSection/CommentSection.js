@@ -38,6 +38,7 @@ class CommentSection extends React.Component {
         text: ""       
       }
     })
+    this.props.store();
   }
 
   render() {

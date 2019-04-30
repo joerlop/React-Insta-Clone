@@ -27,10 +27,12 @@ class App extends React.Component {
   componentDidMount() {
     this.setState({
       postsOnState: dummyData,
-      postsPreSearch: dummyData
+      postsPreSearch: dummyData,
+      searchValue: ""
     })
-  }
-
+    this.hydrateStateWithLocalStorage();
+ }
+ 
   handleChanges = event => {
     event.preventDefault();
     this.setState({
@@ -57,6 +59,31 @@ class App extends React.Component {
     }
   }
 
+  storeState = () => {
+    localStorage.setItem("postsOnState", JSON.stringify(this.state.postsOnState));
+    localStorage.setItem("postsPreSearch", JSON.stringify(this.state.postsPreSearch));
+  }
+
+  hydrateStateWithLocalStorage() {
+    // for all items in state
+    for (let key in this.state) {
+      // if the key exists in localStorage
+      if (localStorage.hasOwnProperty(key)) {
+        // get the key's value from localStorage
+        let value = localStorage.getItem(key);
+
+        // parse the localStorage string and setState
+        try {
+          value = JSON.parse(value);
+          this.setState({ [key]: value });
+        } catch (e) {
+          // handle empty string
+          this.setState({ [key]: value });
+        }
+      }
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -77,6 +104,7 @@ class App extends React.Component {
               postProp={post}
               loveIcon={loveIcon}
               commentIcon={commentIcon}
+              store={this.storeState}
             />
           )}
         </div>

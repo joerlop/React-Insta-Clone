@@ -16,6 +16,7 @@ function PostContainer(props) {
             likes={props.postProp.likes}
             loveIcon={props.loveIcon}
             commentIcon={props.commentIcon}
+            store={props.store}
         />
         <CommentSection
             username={props.postProp.username} 
@@ -24,6 +25,7 @@ function PostContainer(props) {
             loveIcon={props.loveIcon}
             commentIcon={props.commentIcon}
             index={props.indexProp}
+            store={props.store}
         />
     </div>
   );

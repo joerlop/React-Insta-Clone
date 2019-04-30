@@ -20,11 +20,13 @@ class Post extends React.Component {
                 likes: likesNr + 1,
                 liked: true
             })
+            this.props.store();
         } else {
             this.setState({
                 likes: likesNr - 1,
                 liked: false
             })
+            this.props.store();
         }
     }
 
