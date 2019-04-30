@@ -17,9 +17,15 @@ function PostContainer(props) {
             loveIcon={props.loveIcon}
             commentIcon={props.commentIcon}
         />
-        <CommentSection 
+        <CommentSection
+            username={props.postProp.username} 
             commentsProp={props.postProp.comments}
             timestamp={props.postProp.timestamp}
+            change={props.change} 
+            value={props.value}
+            add={props.add}
+            loveIcon={props.loveIcon}
+            commentIcon={props.commentIcon}
         />
     </div>
   );

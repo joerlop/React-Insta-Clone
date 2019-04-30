@@ -13,27 +13,76 @@ import instagram from "./images/instagram.svg";
 import compass from "./images/compass.svg";
 import profile from "./images/profile.svg";
 
-function App() {
-  return (
-    <div className="App">
-      <SearchBar 
-        logo={logo} 
-        instagram={instagram}
-        compass={compass}
-        profile={profile}
-        love={loveIcon}
-      />
-      <div className="content">
-        {dummyData.map(post => 
-          <PostContainer 
-            postProp={post}
-            loveIcon={loveIcon}
-            commentIcon={commentIcon}
-          />
-        )}
+class App extends React.Component {
+  
+  constructor() {
+    super();
+    this.state = {
+      postsOnState: dummyData,
+      comment: {
+        postUsername: "",
+        username: "jonathanerlich",
+        text: ""
+      }
+    }
+  }
+
+  handleChanges = (username, event) => {
+    event.preventDefault();
+    this.setState({
+      comment: {
+        postUsername: username,
+        username: "jonathanerlich",
+        text: event.target.value
+      }
+    })
+  }
+
+  addComment = event => {
+    event.preventDefault();
+    const oldState = this.state.postsOnState; 
+    const newState = oldState.map(post => {
+      if (post.username == this.state.comment.postUsername) {
+        post.comments.push(this.state.comment);
+      }
+      return post;
+    })
+
+    this.setState({
+      postsOnState: newState,
+      comment: {
+        postUsername: "",
+        username: "jonathanerlich",
+        text: "",
+      }
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <SearchBar 
+          logo={logo} 
+          instagram={instagram}
+          compass={compass}
+          profile={profile}
+          love={loveIcon}
+        />
+        <div className="content">
+          {this.state.postsOnState.map(post => 
+            <PostContainer 
+              postProp={post}
+              change={this.handleChanges} 
+              value={this.state.comment.text}
+              add={this.addComment}
+              loveIcon={loveIcon}
+              commentIcon={commentIcon}
+            />
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

@@ -9,7 +9,15 @@ function CommentSection(props) {
     <div className="CommentSection">
       {props.commentsProp.map(comment => <Comment commentsProp={comment}/>)}
       <div className="add-comment">
-        <input type="text" placeholder="Add a comment..."></input>
+        <form onSubmit={props.add}>
+            <input 
+                type="text" 
+                placeholder="Add a comment..."
+                value={props.value}
+                onChange={(event) => props.change(props.username, event)}
+            >        
+            </input>
+        </form>
       </div>
     </div>
   );
@@ -18,7 +26,7 @@ function CommentSection(props) {
 CommentSection.propTypes = {
     commentsProp: PropTypes.arrayOf(
         PropTypes.shape({
-            username: PropTypes.string  ,
+            username: PropTypes.string,
             text: PropTypes.string
         })
     )
