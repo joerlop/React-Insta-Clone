@@ -19,8 +19,8 @@ class App extends React.Component {
     super();
     this.state = {
       postsOnState: dummyData,
+      postUsername: "",
       comment: {
-        postUsername: "",
         username: "jonathanerlich",
         text: ""
       }
@@ -30,8 +30,8 @@ class App extends React.Component {
   handleChanges = (username, event) => {
     event.preventDefault();
     this.setState({
+      postUsername: username,
       comment: {
-        postUsername: username,
         username: "jonathanerlich",
         text: event.target.value
       }
@@ -42,7 +42,7 @@ class App extends React.Component {
     event.preventDefault();
     const oldState = this.state.postsOnState; 
     const newState = oldState.map(post => {
-      if (post.username == this.state.comment.postUsername) {
+      if (post.username == this.state.postUsername) {
         post.comments.push(this.state.comment);
       }
       return post;
