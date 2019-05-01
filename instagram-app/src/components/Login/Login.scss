@@ -1,0 +1,51 @@
+.Container {
+    background: #FAFAFA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    .Login {
+        background: white;
+        width: 15%;
+        height: 40%;
+        border: 1px solid #DBDBDB;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 80%;
+            margin-bottom: 15%;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            input {
+                width: 70%;
+                border-radius: 3px;
+                border: 1px solid #DBDBDB;
+                padding: 5px 0;
+                background: #FAFAFA;
+                text-align: center;
+                margin-bottom: 5%;
+            }
+            
+            button {
+                width: 70%;
+                border-radius: 3px;
+                border: 1px solid #DBDBDB;
+                padding: 5px 0;
+                background: white;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+    }
+}

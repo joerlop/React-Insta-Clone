@@ -13,10 +13,13 @@ function PostContainer(props) {
             thumbnail={props.postProp.thumbnailUrl} 
             username={props.postProp.username}
             image={props.postProp.imageUrl}
-            likes={props.postProp.likes}
+            likesProp={props.postProp.likes}
             loveIcon={props.loveIcon}
             commentIcon={props.commentIcon}
             store={props.store}
+            index={props.indexProp}
+            posts={props.postsOnStateProp}
+            like={props.like}
         />
         <CommentSection
             username={props.postProp.username} 
@@ -26,6 +29,9 @@ function PostContainer(props) {
             commentIcon={props.commentIcon}
             index={props.indexProp}
             store={props.store}
+            change={props.change}
+            add={props.addComment}
+            value={props.value}
         />
     </div>
   );
