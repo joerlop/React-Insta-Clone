@@ -22,7 +22,7 @@ class PostsPage extends React.Component {
           postsPreSearch: [],  
           searchValue: "",
           comment: {
-            username: "",
+            username: this.props.username,
             text: ""       
           }   
         }

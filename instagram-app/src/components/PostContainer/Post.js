@@ -3,6 +3,15 @@ import "./PostContainer.scss"
 
 import PropTypes from "prop-types";
 
+import PostDiv from "../../styles/PostContainer/PostDiv"
+import HeaderDiv from "../../styles/PostContainer/HeaderDiv"
+import HeaderImg from "../../styles/PostContainer/HeaderImg"
+import BoldText from "../../styles/Reusables/BoldText"
+import PostImg from "../../styles/PostContainer/PostImg"
+import FooterDiv from "../../styles/PostContainer/FooterDiv"
+import SocialMediaDiv from "../../styles/PostContainer/SocialMediaDiv"
+import SocialMediaImg from "../../styles/PostContainer/SocialMediaImg"
+
 class Post extends React.Component {
     constructor(props) {
         super(props);
@@ -20,23 +29,23 @@ class Post extends React.Component {
 
     render() {
         return (
-            <div className="Post">
-                <div className="Post-header">
-                    <img src={this.props.thumbnail}></img>
-                    <p><strong>{this.props.username}</strong></p>
-                </div>
-                <img src={this.props.image}></img>
-                <div className="Post-footer">
-                    <div className="socialmedia">
-                        <img    src={this.props.loveIcon} 
+            <PostDiv>
+                <HeaderDiv>
+                    <HeaderImg src={this.props.thumbnail} />
+                    <BoldText title={true}>{this.props.username}</BoldText>
+                </HeaderDiv>
+                <PostImg src={this.props.image} />
+                <FooterDiv>
+                    <SocialMediaDiv>
+                        <SocialMediaImg    src={this.props.loveIcon} 
                                 onClick={(event) => this.onClickHandler(event, this.props.index)}
                         >
-                        </img>
-                        <img src={this.props.commentIcon}></img>
-                    </div>
-                    <p><strong>{this.props.likesProp} likes</strong></p>
-                </div>
-            </div>
+                        </SocialMediaImg>
+                        <SocialMediaImg src={this.props.commentIcon} />
+                    </SocialMediaDiv>
+                    <BoldText title={false}>{this.props.likesProp} likes</BoldText>
+                </FooterDiv>
+            </PostDiv>
         );
     }    
 }

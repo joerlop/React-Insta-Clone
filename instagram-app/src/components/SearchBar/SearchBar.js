@@ -1,5 +1,15 @@
 import React from 'react';
-import "./SearchBar.scss"
+import "./SearchBar.scss";
+
+import LogoContainer from "../../styles/Navigation/LogoContainer"
+import Logo from "../../styles/Navigation/Logo"
+import Instagram from "../../styles/Navigation/Instagram"
+import Header from "../../styles/Navigation/Header"
+import Separation from "../../styles/Navigation/Separation"
+import SearchForm from "../../styles/Navigation/SearchForm"
+import SearchInput from "../../styles/Navigation/SearchInput"
+import IconContainer from "../../styles/Navigation/IconContainer"
+import ProfileIcon from "../../styles/Navigation/ProfileIcon"
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -11,21 +21,24 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className="SearchBar">
-          <div className="logo-container">
-              <img className="logo" src={this.props.logo}></img>
-              <p>|</p>
-              <img className="instagram" src={this.props.instagram}></img>
-          </div>
-          <form onSubmit={(event) => this.props.search(event)}>
-            <input onChange={(event) => this.props.change(event)} value={this.props.value} placeholder="Search"></input>
-          </form>
-          <div className="profile-icons">
-              <img className="compass-img" src={this.props.compass}></img>
-              <img className="love-img" src={this.props.love}></img>
-              <img className="profile-img" src={this.props.profile}></img>
-          </div>
-      </div>
+      <Header>
+          <LogoContainer>
+              <Logo src={this.props.logo} />
+              <Separation>|</Separation>
+              <Instagram src={this.props.instagram} />
+          </LogoContainer>
+          <SearchForm onSubmit={(event) => this.props.search(event)}>
+            <SearchInput 
+              onChange={(event) => this.props.change(event)} 
+              value={this.props.value} placeholder="Search">
+            </SearchInput>
+          </SearchForm>
+          <IconContainer>
+              <ProfileIcon src={this.props.compass} />
+              <ProfileIcon src={this.props.love} />
+              <ProfileIcon src={this.props.profile} />
+          </IconContainer>
+      </Header>
     );
   }
 }

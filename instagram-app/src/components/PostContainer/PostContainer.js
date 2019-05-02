@@ -6,9 +6,11 @@ import Post from "./Post"
 
 import PropTypes from "prop-types";
 
+import Container from "../../styles/PostContainer/Container"
+
 function PostContainer(props) {
   return (
-    <div className="PostContainer">
+    <Container>
         <Post
             thumbnail={props.postProp.thumbnailUrl} 
             username={props.postProp.username}
@@ -33,7 +35,7 @@ function PostContainer(props) {
             add={props.addComment}
             value={props.value}
         />
-    </div>
+    </Container>
   );
 }
 
